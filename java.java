@@ -1,12 +1,12 @@
-🧩 1. 方法与控制结构（Methods and Control Structures）
+🧩 1.（Methods and Control Structures）
 public class ClassName {
-    // 预设的辅助方法
+    // method
     public static boolean helperMethod(int param) {
-        // 实现细节
+        // Details
         return true;
     }
 
-    // 主要方法
+    // Main Method
     public static int mainMethod(int param1, int param2) {
         int result = 0;
         for (int i = param1; i <= param2; i++) {
@@ -19,7 +19,7 @@ public class ClassName {
 }
 
 
-🧱 2. 类的设计（Class Design）
+🧱 2.（Class Design）
 public class CustomClass {
     private int attribute1;
     private String attribute2;
@@ -38,7 +38,7 @@ public class CustomClass {
     }
 }
 
-📚 3. 数组与ArrayList（Array and ArrayList）
+📚 3. （Array and ArrayList）
 import java.util.ArrayList;
 
 public class ListProcessor {
@@ -67,7 +67,7 @@ public class ListProcessor {
     }
 }
 
-🧮 4. 二维数组（2D Array）
+🧮 4.（2D Array）
   public class MatrixAnalyzer {
     public static int sumRow(int[][] matrix, int row) {
         int sum = 0;
