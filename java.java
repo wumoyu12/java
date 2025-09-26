@@ -1,89 +1,168 @@
-🧩 1.（Methods and Control Structures）
-public class ClassName {
-    // method
-    public static boolean helperMethod(int param) {
-        // Details
-        return true;
-    }
+package StudentInfo;
 
-    // Main Method
-    public static int mainMethod(int param1, int param2) {
-        int result = 0;
-        for (int i = param1; i <= param2; i++) {
-            if (helperMethod(i)) {
-                result++;
-            }
-        }
-        return result;
-    }
+public class Main
+{
+
+	public static void main(String[] args)
+	{
+		CollectInfo student1 = new CollectInfo();
+		System.out.println("-------------------------------------------------------");
+		CollectInfo student2 = new CollectInfo();
+		System.out.println("-------------------------------------------------------");
+		CollectInfo student3 = new CollectInfo();
+		System.out.println("-------------------------------------------------------");
+	}
+
 }
 
 
-🧱 2.（Class Design）
-public class CustomClass {
-    private int attribute1;
-    private String attribute2;
 
-    public CustomClass(int attr1, String attr2) {
-        attribute1 = attr1;
-        attribute2 = attr2;
-    }
 
-    public void updateAttribute1(int value) {
-        attribute1 += value;
-    }
 
-    public String getAttribute2() {
-        return attribute2;
-    }
+package StudentInfo;
+
+import java.util.Scanner;
+
+public class CollectInfo
+{
+	String sfname, slname, ans;
+	int sgrade = 0;
+	int PreGPA = 0;
+	int CurGPA = 0;
+	Scanner allinput = new Scanner(System.in);
+	
+	public CollectInfo()
+	{
+		AllInfo();
+	}
+	
+	public void AllInfo()
+	{
+		System.out.println("Enter your first name: ");
+		sfname = allinput.nextLine(); 
+		System.out.println("Enter your last name: ");
+		slname = allinput.nextLine(); 
+		System.out.println("Enter your grade level: ");
+		sgrade = allinput.nextInt();
+		System.out.println("Enter your GPA from last year(0-100): ");
+		PreGPA = allinput.nextInt();
+		System.out.println("Enter your GPA from this year(0-100): ");
+		CurGPA = allinput.nextInt();
+		
+		PersonInfo studentinfo = new PersonInfo(sfname, slname, sgrade, PreGPA, CurGPA);
+		
+		System.out.println("Student Name:" + studentinfo.GetName());
+		System.out.println("Grade Level:" + sgrade);
+		System.out.println("Previous GPA:" + PreGPA);
+		System.out.println("Previous GPA:" + studentinfo.GetGPA());
+		System.out.println("Current GPA:" + CurGPA);
+		System.out.println("Current GPA:" + studentinfo.GetGPA());
+		System.out.println("Update GPA (100 scale):" + studentinfo.updateGPA100());
+		System.out.println("Update GPA (4 scale):" + studentinfo.updateGPA());
+	
+	
+	if (studentinfo.isHonorRoll() == true)
+	{
+		System.out.println("You are in Honor Roll");
+	}
+	
+	if (studentinfo.promote() == true)
+	{
+		System.out.println("You are in grade " + studentinfo.GetGrade() + " right now.");
+	}
+	
+	else
+	{
+		System.out.println("You are still in grade " + sgrade + ", because your GPA is below the 65.");
+	}
+	
+	}
 }
 
-📚 3. （Array and ArrayList）
-import java.util.ArrayList;
 
-public class ListProcessor {
-    private ArrayList<String> items;
 
-    public ListProcessor() {
-        items = new ArrayList<String>();
-    }
 
-    public void addItem(String item) {
-        items.add(item);
-    }
 
-    public boolean removeItem(String item) {
-        return items.remove(item);
-    }
 
-    public int countItemsContaining(String substring) {
-        int count = 0;
-        for (String item : items) {
-            if (item.contains(substring)) {
-                count++;
-            }
-        }
-        return count;
-    }
-}
 
-🧮 4.（2D Array）
-  public class MatrixAnalyzer {
-    public static int sumRow(int[][] matrix, int row) {
-        int sum = 0;
-        for (int val : matrix[row]) {
-            sum += val;
-        }
-        return sum;
-    }
 
-    public static boolean isColumnUniform(int[][] matrix, int col) {
-        int first = matrix[0][col];
-        for (int i = 1; i < matrix.length; i++) {
-            if (matrix[i][col] != first) {
-                return false;
-            }
-        }
-        return true;
-    }
+
+
+
+
+
+
+
+
+
+
+package StudentInfo;
+
+public class PersonInfo
+{
+	private String firstname, lastname;
+	private int grade;
+	private int pGPA;
+	private int cGPA;
+	
+	public PersonInfo(String fname, String lname, int grade, int cGPA, int pGPA)
+	{
+		this.firstname = fname;
+		this.lastname = lname;
+		this.grade = grade;
+		this.pGPA = pGPA;
+		this.cGPA = cGPA;
+	}
+	
+	public String GetName()
+	{
+		String fullname = firstname + " " + lastname;
+		return fullname;
+	}
+	
+	public Integer GetGrade()
+	{
+		grade = grade + 1;
+		return grade;
+	}
+	
+	public Double GetGPA()
+	{
+		double fourScale = cGPA / 100 * 4;
+		return fourScale;
+	}
+	
+	public Double updateGPA100()
+	{
+		double avgerage = (pGPA + cGPA) / 2;
+		return avgerage;
+	}
+	
+	public Double updateGPA()
+	{
+		double averageGPA = updateGPA100() / 100 * 4;
+		return averageGPA;
+	}
+	
+	public Boolean promote()
+	{
+		boolean ifPromote = false;
+		if (GetGPA() >= 2.6)
+		{
+			ifPromote = true;
+		}
+		return ifPromote;
+	}
+	
+	public Boolean isHonorRoll()
+	{
+		boolean ifHoorRoll = false;
+		if (updateGPA() >= 3.5)
+		{
+			ifHoorRoll = true;
+		}
+		
+		return ifHoorRoll;
+		
+	}
 }
