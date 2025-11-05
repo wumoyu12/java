@@ -1,0 +1,63 @@
+package JavaPack;
+
+public class MainProgram
+{
+
+	public static void main(String[] args)
+	{
+		CollectInfo allinfo = new CollectInfo();
+	}
+
+}
+
+
+
+
+package JavaPack;
+
+import java.util.Scanner;
+
+public class CollectInfo
+{
+	static Scanner allinput = new Scanner(System.in);
+	
+	public CollectInfo()
+	{
+		AskInfo();
+	}
+	
+	public void AskInfo()
+	{
+		float numgrades;
+		boolean yesorno;
+		
+		System.out.print("How many grades will you be averaging?");
+		numgrades = allinput.nextFloat();
+		yesorno = CheckNum(numgrades);
+		System.out.print(yesorno);
+	}
+	
+	public boolean CheckNum(float gradenum)
+	{
+		boolean boolstate = true;
+		
+		float isyes = gradenum % 1;
+		System.out.print(isyes);
+		
+		if(isyes > 0)
+		{
+			return false;
+		}
+		else
+		{
+			if (gradenum < 1 || gradenum >= 100)
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+	}
+}
