@@ -10,12 +10,11 @@ public class Calculate
     // Ask user to enter all grades, calculate average, GPA, and letter grade
     public void InputGrades(float total)
     {
-        float count = 0;
         float sum = 0;
         float grade;
 
-        // Repeat until all grades are entered
-        while (count < total)
+        // Use for loop instead of while
+        for (float count = 0; count < total; count = count + 1)
         {
             System.out.print("Please enter grade #" + (count + 1) + ": ");
             grade = input.nextFloat();
@@ -24,11 +23,11 @@ public class Calculate
             if (grade >= 0 && grade <= 100)
             {
                 sum = sum + grade; // add grade to total
-                count = count + 1; // move to next grade
             }
             else
             {
                 System.out.println("Invalid grade. Try again.");
+                count = count - 1; // repeat this round
             }
         }
 
