@@ -1,1 +1,98 @@
+package javaPack;
+
+import java.util.Scanner;
+
+public class MainBank
+{
+    public static void main(String[] args)
+    {
+        DisplayMain();
+    }
+
+    static void DisplayMain()
+    {
+        Scanner input = new Scanner(System.in);
+        String choice = "yes";
+
+        while (choice.equalsIgnoreCase("yes"))
+        {
+            BankAccount myAccount = new BankAccount();
+
+            // Ask for account holder name
+            System.out.print("Enter account holder name: ");
+            String name = input.nextLine();
+            myAccount.setAccountHolder(name);
+
+            // Ask for account balance
+            System.out.print("Enter account balance: ");
+            double balance = input.nextDouble();
+            myAccount.setBalance(balance);
+
+            input.nextLine(); // clear buffer
+
+            // Display information
+            System.out.println("\nUser: " + myAccount.getAccountHolder());
+            System.out.println("Balance: $" + myAccount.getBalance());
+
+            // Ask if user wants another account
+            System.out.print("\nEnter yes if you want to enter another bank account: ");
+            choice = input.nextLine();
+
+            System.out.println("-----------------------------------");
+        }
+
+        System.out.println("Thank you for using the bank system!");
+    }
+}
+
+
+
+
+
+
+
+
+
+package javaPack;
+
+public class BankAccount
+{
+    private String accountHolder;
+    private double accountBalance;
+
+    // ACCESSORS
+    public String getAccountHolder()
+    {
+        return accountHolder;
+    }
+
+    public double getBalance()
+    {
+        return accountBalance;
+    }
+
+    // MUTATORS
+    public void setAccountHolder(String name)
+    {
+        this.accountHolder = "Greetings, " + name + " I am happy to assist you!";
+    }
+
+    public void setBalance(double money)
+    {
+        if (money >= 0)
+        {
+            this.accountBalance = money;
+        }
+        else
+        {
+            System.out.println("Error! There is an issue with the transaction");
+        }
+    }
+}
+
+
+
+
+
+
 
