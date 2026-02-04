@@ -1,98 +1,39 @@
-package javaPack;
+public class WordTool {
 
-import java.util.Scanner;
+    
+    public static void printShortestWords(String[] words) {
 
-public class MainBank
-{
-    public static void main(String[] args)
-    {
-        DisplayMain();
-    }
+        int minLength = words[0].length();
 
-    static void DisplayMain()
-    {
-        Scanner input = new Scanner(System.in);
-        String choice = "yes";
-
-        while (choice.equalsIgnoreCase("yes"))
-        {
-            BankAccount myAccount = new BankAccount();
-
-            // Ask for account holder name
-            System.out.print("Enter account holder name: ");
-            String name = input.nextLine();
-            myAccount.setAccountHolder(name);
-
-            // Ask for account balance
-            System.out.print("Enter account balance: ");
-            double balance = input.nextDouble();
-            myAccount.setBalance(balance);
-
-            input.nextLine(); // clear buffer
-
-            // Display information
-            System.out.println("\nUser: " + myAccount.getAccountHolder());
-            System.out.println("Balance: $" + myAccount.getBalance());
-
-            // Ask if user wants another account
-            System.out.print("\nEnter yes if you want to enter another bank account: ");
-            choice = input.nextLine();
-
-            System.out.println("-----------------------------------");
+        // find the shortest word
+        for (int i = 1; i < words.length; i++) {
+            if (words[i].length() < minLength) {
+                minLength = words[i].length();
+            }
         }
 
-        System.out.println("Thank you for using the bank system!");
-    }
-}
-
-
-
-
-
-
-
-
-
-package javaPack;
-
-public class BankAccount
-{
-    private String accountHolder;
-    private double accountBalance;
-
-    // ACCESSORS
-    public String getAccountHolder()
-    {
-        return accountHolder;
-    }
-
-    public double getBalance()
-    {
-        return accountBalance;
-    }
-
-    // MUTATORS
-    public void setAccountHolder(String name)
-    {
-        this.accountHolder = "Greetings, " + name + " I am happy to assist you!";
-    }
-
-    public void setBalance(double money)
-    {
-        if (money >= 0)
-        {
-            this.accountBalance = money;
-        }
-        else
-        {
-            System.out.println("Error! There is an issue with the transaction");
+        // print the word
+        System.out.println("Shortest word(s):");
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].length() == minLength) {
+                System.out.println(words[i]);
+            }
         }
     }
 }
 
 
 
+public class Main {
 
+    public static void main(String[] args) {
 
+        String[] words = {
+            "high", "every", "nearing", "checking", "food ",
+            "stand", "value", "best", "energy", "add",
+            "grand", "notation", "addition", "food ", "stand"
+        };
 
-
+        WordTool.printShortestWords(words);
+    }
+}
