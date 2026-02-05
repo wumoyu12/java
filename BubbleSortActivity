@@ -22,7 +22,7 @@ public class BubbleSortActivity
 		
 		for (int n=0; n<arr.length; n++)
 		{
-			System.out.println(arr[n] + " ");
+			System.out.print(arr[n] + " ");
 		}
 	}
 
