@@ -1,32 +1,22 @@
-public class Product
+public class Main
 {
-    private String name;
-    private double price;
-    private int quantity;
-
-    public Product(String n, double p, int q)
+    public static void main(String[] args)
     {
-        name = n;
-        price = p;
-        quantity = q;
-    }
+        Product p1 = new Product("Apple", 1.5, 10);
+        Product p2 = new Product("Milk", 3.0, 5);
+        Product p3 = new Product("Bread", 2.0, 8);
 
-    public double getPrice()
-    {
-        return price;
-    }
+        Product[] storeProducts = {p1, p2, p3};
 
-    public int getQuantity()
-    {
-        return quantity;
-    }
+        Inventory storeInventory = new Inventory(storeProducts);
 
-    public String getName()
-    {
-        return name;
+        storeInventory.displayProducts();
+
+        double total = storeInventory.calculateTotalValue();
+
+        System.out.println("Total Inventory Value: $" + total);
     }
 }
-
 
 
 
@@ -42,4 +32,62 @@ public class Inventory
 
     public double calculateTotalValue()
     {
-        double total = 
+        double total = 0;
+
+        for(int i = 0; i < products.length; i++)
+        {
+            total = total + 
+                    products[i].getPrice() *
+                    products[i].getQuantity();
+        }
+
+        return total;
+    }
+
+    public void displayProducts()
+    {
+        for(int i = 0; i < products.length; i++)
+        {
+            System.out.println(
+                products[i].getName() + 
+                " - Price: $" + products[i].getPrice() + 
+                " - Quantity: " + products[i].getQuantity()
+            );
+        }
+    }
+}
+
+
+
+
+
+
+
+public class Product
+{
+    private String name;
+    private double price;
+    private int quantity;
+
+    public Product(String n, double p, int q)
+    {
+        name = n;
+        price = p;
+        quantity = q;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public double getPrice()
+    {
+        return price;
+    }
+
+    public int getQuantity()
+    {
+        return quantity;
+    }
+}
